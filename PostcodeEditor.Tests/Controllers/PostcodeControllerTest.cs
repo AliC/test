@@ -15,11 +15,22 @@ namespace PostcodeEditor.Tests.Controllers
         [Test]
         public void Index()
         {
-            
+
             PostcodeController controller = new PostcodeController();
-            
+
             ViewResult result = controller.Index() as ViewResult;
-            
+
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void IndListex()
+        {
+
+            PostcodeController controller = new PostcodeController();
+
+            ViewResult result = controller.Index() as ViewResult;
+
             Assert.IsNotNull(result);
         }
 

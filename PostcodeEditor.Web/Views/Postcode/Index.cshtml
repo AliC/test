@@ -1,0 +1,14 @@
+﻿@{ ViewBag.Title = "Postcode Editor"; }
+
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="file" id="file"/>
+    </p>
+    <p>
+        <input type="submit" value="Upload"/>
+    </p>
+}
