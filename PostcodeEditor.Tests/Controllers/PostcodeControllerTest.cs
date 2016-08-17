@@ -24,12 +24,12 @@ namespace PostcodeEditor.Tests.Controllers
         }
 
         [Test]
-        public void IndListex()
+        public void List()
         {
 
             PostcodeController controller = new PostcodeController();
 
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.List() as ViewResult;
 
             Assert.IsNotNull(result);
         }

@@ -8,6 +8,10 @@ namespace PostcodeEditor.Web.Controllers
         {
             return View();
         }
-    
+
+        public ActionResult List()
+        {
+            return View();
+        }
     }
 }
