@@ -8,6 +8,7 @@ namespace PostcodeEditor.Data
 {
     public class PostcodeDetails : IPostcode
     {
+        public int Id { get; set; }
         public string Postcode { get; set; }
         public object Latitude { get; set; }
         public object Longitude { get; set; }

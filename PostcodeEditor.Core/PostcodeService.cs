@@ -14,12 +14,13 @@ namespace PostcodeEditor.Web
         {
              _postcodeDbContext = new PostcodeDbContext();
         }
+
         public IEnumerable<Core.PostcodeDetails> Get()
         {
             return Map(_postcodeDbContext.Postcodes);
         }
 
-        private IEnumerable<Core.PostcodeDetails> Map(DbSet<Data.PostcodeDetails> postcodes)
+        private IEnumerable<Core.PostcodeDetails> Map(IEnumerable<Data.PostcodeDetails> postcodes)
         {
             foreach(PostcodeDetails postcode in postcodes)
             {

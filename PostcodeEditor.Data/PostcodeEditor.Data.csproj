@@ -50,13 +50,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IPostcode.cs" />
+    <Compile Include="Migrations\201608171951204_initial migration.cs" />
+    <Compile Include="Migrations\201608171951204_initial migration.Designer.cs">
+      <DependentUpon>201608171951204_initial migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PostcodeDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\PostcodeDBContext.cs" />
+    <Compile Include="Repositories\PostcodeDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201608171951204_initial migration.resx">
+      <DependentUpon>201608171951204_initial migration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
