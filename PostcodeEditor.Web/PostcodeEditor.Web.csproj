@@ -187,11 +187,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\FromTemplateEntityModelClass.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FromTemplateEntityModelClass.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Controllers\PostcodeController.cs" />
@@ -207,13 +202,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\FromTemplateEntityModelClass.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FromTemplateEntityModelClass.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\FromTemplateEntityModelClass.edmx.diagram">
-      <DependentUpon>FromTemplateEntityModelClass.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
