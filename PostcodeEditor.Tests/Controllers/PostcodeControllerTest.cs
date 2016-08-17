@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using Moq;
 using NUnit.Framework;
-using PostcodeEditor;
+using PostcodeEditor.Core;
 using PostcodeEditor.Web.Controllers;
 
 namespace PostcodeEditor.Tests.Controllers
@@ -15,8 +13,8 @@ namespace PostcodeEditor.Tests.Controllers
         [Test]
         public void Index()
         {
-
-            PostcodeController controller = new PostcodeController();
+            IPostcodeService service = Mock.Of<IPostcodeService>();
+            PostcodeController controller = new PostcodeController(service);
 
             ViewResult result = controller.Index() as ViewResult;
 
@@ -26,12 +24,27 @@ namespace PostcodeEditor.Tests.Controllers
         [Test]
         public void List()
         {
+            IList<PostcodeDetails> expectedPostcodes = new List<PostcodeDetails>
+            {
+                new PostcodeDetails
+                {
+                    Postcode = "QV1 1IJ"
+                }
+            };
 
-            PostcodeController controller = new PostcodeController();
+            IPostcodeService service = Mock.Of<IPostcodeService>();
+            Mock.Get(service).Setup(s => s.Get()).Returns(expectedPostcodes);
+
+            PostcodeController controller = new PostcodeController(service);
 
             ViewResult result = controller.List() as ViewResult;
 
             Assert.IsNotNull(result);
+
+            IList<PostcodeDetails> postcodes = result.Model as IList<PostcodeDetails>;
+
+            Assert.IsNotNull(postcodes);
+            Assert.That(postcodes.Count, Is.EqualTo(expectedPostcodes.Count));
         }
 
     }

@@ -1,6 +1,14 @@
-﻿@{
+﻿@using PostcodeEditor.Core
+
+@model IEnumerable<PostcodeDetails>
+
+@{
     ViewBag.Title = "Postcodes";
 }
 
 <h2>@ViewBag.Title</h2>
 
+@foreach(PostcodeDetails postcode in Model)
+{
+  <p>@postcode.Postcode</p>
+}
