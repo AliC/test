@@ -1,4 +1,5 @@
 ﻿using PostcodeEditor.Data;
+using PostcodeEditor.SeparatedInterfaces;
 
 namespace PostcodeEditor.Core
 {

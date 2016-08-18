@@ -2,7 +2,8 @@
 using System.Web.Mvc;
 using Moq;
 using NUnit.Framework;
-using PostcodeEditor.Core;
+using PostcodeEditor.Data;
+using PostcodeEditor.SeparatedInterfaces;
 using PostcodeEditor.Web.Controllers;
 
 namespace PostcodeEditor.Tests.Controllers
@@ -24,9 +25,9 @@ namespace PostcodeEditor.Tests.Controllers
         [Test]
         public void List()
         {
-            IList<PostcodeDetails> expectedPostcodes = new List<PostcodeDetails>
+            IList<Core.PostcodeDetails> expectedPostcodes = new List<Core.PostcodeDetails>
             {
-                new PostcodeDetails
+                new Core.PostcodeDetails
                 {
                     Postcode = "QV1 1IJ"
                 }
@@ -41,7 +42,7 @@ namespace PostcodeEditor.Tests.Controllers
 
             Assert.IsNotNull(result);
 
-            IList<PostcodeDetails> postcodes = result.Model as IList<PostcodeDetails>;
+            IList<Core.PostcodeDetails> postcodes = result.Model as IList<Core.PostcodeDetails>;
 
             Assert.IsNotNull(postcodes);
             Assert.That(postcodes.Count, Is.EqualTo(expectedPostcodes.Count));

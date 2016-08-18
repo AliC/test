@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Data.Entity;
+using PostcodeEditor.Core;
 using PostcodeEditor.Data;
 using PostcodeEditor.Data.Repositories;
-using PostcodeEditor.Web.Controllers;
+using PostcodeEditor.SeparatedInterfaces;
 
 namespace PostcodeEditor.Web
 {
@@ -15,14 +16,14 @@ namespace PostcodeEditor.Web
              _postcodeDbContext = new PostcodeDbContext();
         }
 
-        public IEnumerable<Core.PostcodeDetails> Get()
+        public IEnumerable<IPostcode> Get()
         {
             return Map(_postcodeDbContext.Postcodes);
         }
 
         private IEnumerable<Core.PostcodeDetails> Map(IEnumerable<Data.PostcodeDetails> postcodes)
         {
-            foreach(PostcodeDetails postcode in postcodes)
+            foreach(Data.PostcodeDetails postcode in postcodes)
             {
                 yield return new Core.PostcodeDetails
                 {

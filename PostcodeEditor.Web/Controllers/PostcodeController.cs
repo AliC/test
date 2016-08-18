@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using PostcodeEditor.Core;
+using PostcodeEditor.Data;
+using PostcodeEditor.SeparatedInterfaces;
 
 namespace PostcodeEditor.Web.Controllers
 {
@@ -20,7 +22,7 @@ namespace PostcodeEditor.Web.Controllers
 
         public ActionResult List()
         {
-            IEnumerable<PostcodeDetails> postcodes = _postcodeService.Get();
+            IEnumerable<IPostcode> postcodes = _postcodeService.Get();
 
             return View(postcodes);
         }

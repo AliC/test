@@ -1,6 +1,6 @@
-﻿@using PostcodeEditor.Core
+﻿@using PostcodeEditor.SeparatedInterfaces
 
-@model IEnumerable<PostcodeDetails>
+@model IEnumerable<IPostcode>
 
 @{
     ViewBag.Title = "Postcodes";
@@ -8,7 +8,7 @@
 
 <h2>@ViewBag.Title</h2>
 
-@foreach(PostcodeDetails postcode in Model)
+@foreach(IPostcode postcode in Model)
 {
   <p>@postcode.Postcode</p>
 }

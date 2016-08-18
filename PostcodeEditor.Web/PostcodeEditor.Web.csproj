@@ -289,6 +289,14 @@
       <Project>{3E68DECC-AA7E-4BBA-8F91-1C5153D7EA96}</Project>
       <Name>PostcodeEditor.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PostcodeEditor.Data\PostcodeEditor.Data.csproj">
+      <Project>{749E74F5-4599-419A-81E3-5D145458802F}</Project>
+      <Name>PostcodeEditor.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PostcodeEditor.SeparatedInterfaces\PostcodeEditor.SeparatedInterfaces.csproj">
+      <Project>{F508C551-EBA9-4B0E-981F-132A3CC168CB}</Project>
+      <Name>PostcodeEditor.SeparatedInterfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

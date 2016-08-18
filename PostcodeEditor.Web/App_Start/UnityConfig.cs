@@ -1,5 +1,8 @@
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
+using PostcodeEditor.Core;
+using PostcodeEditor.Data;
+using PostcodeEditor.SeparatedInterfaces;
 using PostcodeEditor.Web.Controllers;
 using Unity.Mvc5;
 
@@ -9,7 +12,7 @@ namespace PostcodeEditor.Web
     {
         public static void RegisterComponents()
         {
-			var container = new UnityContainer();
+			UnityContainer container = new UnityContainer();
             
             container.RegisterType<IPostcodeService, PostcodeService>();
             

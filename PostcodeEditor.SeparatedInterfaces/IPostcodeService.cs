@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 
-namespace PostcodeEditor.Web.Controllers
+namespace PostcodeEditor.SeparatedInterfaces
 {
     public interface IPostcodeService
     {
-        IEnumerable<Core.PostcodeDetails> Get();
+        IEnumerable<IPostcode> Get();
     }
 }

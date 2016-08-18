@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IPostcode.cs" />
     <Compile Include="Migrations\201608171951204_initial migration.cs" />
     <Compile Include="Migrations\201608171951204_initial migration.Designer.cs">
       <DependentUpon>201608171951204_initial migration.cs</DependentUpon>
@@ -62,11 +61,18 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="SampleCSV\postcodes.csv" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608171951204_initial migration.resx">
       <DependentUpon>201608171951204_initial migration.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PostcodeEditor.SeparatedInterfaces\PostcodeEditor.SeparatedInterfaces.csproj">
+      <Project>{F508C551-EBA9-4B0E-981F-132A3CC168CB}</Project>
+      <Name>PostcodeEditor.SeparatedInterfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
