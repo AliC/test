@@ -5,7 +5,7 @@ using PostcodeEditor.Data;
 using PostcodeEditor.Data.Repositories;
 using PostcodeEditor.SeparatedInterfaces;
 
-namespace PostcodeEditor.Web
+namespace PostcodeEditor.Core
 {
     public class PostcodeService : IPostcodeService
     {
@@ -18,18 +18,7 @@ namespace PostcodeEditor.Web
 
         public IEnumerable<IPostcode> Get()
         {
-            return Map(_postcodeDbContext.Postcodes);
-        }
-
-        private IEnumerable<Core.PostcodeDetails> Map(IEnumerable<Data.PostcodeDetails> postcodes)
-        {
-            foreach(Data.PostcodeDetails postcode in postcodes)
-            {
-                yield return new Core.PostcodeDetails
-                {
-                    Postcode = postcode.Postcode
-                };
-            }
+            return _postcodeDbContext.Postcodes;
         }
     }
 }

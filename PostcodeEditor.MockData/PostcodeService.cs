@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using PostcodeEditor.Data.Repositories;
 using PostcodeEditor.SeparatedInterfaces;
 
 namespace PostcodeEditor.MockData
@@ -8,9 +7,13 @@ namespace PostcodeEditor.MockData
     {
         public IEnumerable<IPostcode> Get()
         {
-            return null;
-        }
-
-        
+            yield return new PostcodeDetails
+            {
+                Postcode = "QV1 1IJ",
+                CountryRegion = "From Mock Data"
+            };
     }
+
+
+}
 }

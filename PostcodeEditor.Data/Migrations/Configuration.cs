@@ -28,7 +28,11 @@ namespace PostcodeEditor.Data.Migrations
             //    );
             //
 
-            context.Postcodes.AddOrUpdate(p => p.Postcode, new PostcodeDetails { Postcode = "QV1 1IJ" });
+            context.Postcodes.AddOrUpdate(p => p.Postcode, new PostcodeDetails
+            {
+                Postcode = "QV1 1IJ",
+                CountryRegion = "From EF Seed"
+            });
         }
     }
 }

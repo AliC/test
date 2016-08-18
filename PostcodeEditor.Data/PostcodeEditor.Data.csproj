@@ -53,6 +53,10 @@
     <Compile Include="Migrations\201608171951204_initial migration.Designer.cs">
       <DependentUpon>201608171951204_initial migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608181827046_Added CountryRegion property.cs" />
+    <Compile Include="Migrations\201608181827046_Added CountryRegion property.Designer.cs">
+      <DependentUpon>201608181827046_Added CountryRegion property.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PostcodeDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,10 +71,13 @@
     <EmbeddedResource Include="Migrations\201608171951204_initial migration.resx">
       <DependentUpon>201608171951204_initial migration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608181827046_Added CountryRegion property.resx">
+      <DependentUpon>201608181827046_Added CountryRegion property.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PostcodeEditor.SeparatedInterfaces\PostcodeEditor.SeparatedInterfaces.csproj">
-      <Project>{F508C551-EBA9-4B0E-981F-132A3CC168CB}</Project>
+      <Project>{f508c551-eba9-4b0e-981f-132a3cc168cb}</Project>
       <Name>PostcodeEditor.SeparatedInterfaces</Name>
     </ProjectReference>
   </ItemGroup>

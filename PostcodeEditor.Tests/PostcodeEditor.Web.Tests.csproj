@@ -113,7 +113,7 @@
       <Name>PostcodeEditor.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\PostcodeEditor.SeparatedInterfaces\PostcodeEditor.SeparatedInterfaces.csproj">
-      <Project>{F508C551-EBA9-4B0E-981F-132A3CC168CB}</Project>
+      <Project>{f508c551-eba9-4b0e-981f-132a3cc168cb}</Project>
       <Name>PostcodeEditor.SeparatedInterfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\PostcodeEditor.Web\PostcodeEditor.Web.csproj">

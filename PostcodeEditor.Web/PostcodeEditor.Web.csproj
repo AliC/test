@@ -293,8 +293,12 @@
       <Project>{749E74F5-4599-419A-81E3-5D145458802F}</Project>
       <Name>PostcodeEditor.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PostcodeEditor.MockData\PostcodeEditor.MockData.csproj">
+      <Project>{63c4903f-9bf5-4590-b1a4-2928d24ee0f6}</Project>
+      <Name>PostcodeEditor.MockData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PostcodeEditor.SeparatedInterfaces\PostcodeEditor.SeparatedInterfaces.csproj">
-      <Project>{F508C551-EBA9-4B0E-981F-132A3CC168CB}</Project>
+      <Project>{f508c551-eba9-4b0e-981f-132a3cc168cb}</Project>
       <Name>PostcodeEditor.SeparatedInterfaces</Name>
     </ProjectReference>
   </ItemGroup>

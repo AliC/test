@@ -6,11 +6,11 @@ namespace PostcodeEditor.Core
     public class PostcodeDetails : IPostcode
     {
         public string Postcode { get; set; }
-        public object Latitude { get; set; }
-        public object Longitude { get; set; }
-        public object County { get; set; }
-        public object District { get; set; }
-        public object Ward { get; set; }
-        public object CountryRegion { get; set; }
+        public decimal Latitude { get; set; }
+        public decimal Longitude { get; set; }
+        public string County { get; set; }
+        public string District { get; set; }
+        public string Ward { get; set; }
+        public string CountryRegion { get; set; }
     }
 }

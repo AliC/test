@@ -40,14 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PostcodeDetails.cs" />
     <Compile Include="PostcodeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PostcodeEditor.Data\PostcodeEditor.Data.csproj">
-      <Project>{749E74F5-4599-419A-81E3-5D145458802F}</Project>
-      <Name>PostcodeEditor.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PostcodeEditor.SeparatedInterfaces\PostcodeEditor.SeparatedInterfaces.csproj">
       <Project>{F508C551-EBA9-4B0E-981F-132A3CC168CB}</Project>
       <Name>PostcodeEditor.SeparatedInterfaces</Name>
