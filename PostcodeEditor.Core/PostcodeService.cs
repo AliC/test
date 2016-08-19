@@ -29,7 +29,7 @@ namespace PostcodeEditor.Core
             return new PostcodeDetails
             {
                 Postcode = postcode.Postcode,
-                CountryRegion = postcode.CountryRegion
+                Region = postcode.Region
             };
         }
     }

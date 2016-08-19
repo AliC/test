@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Parsers.cs" />
     <Compile Include="PostcodeDetails.cs" />
     <Compile Include="PostcodeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -11,7 +11,7 @@ namespace PostcodeEditor.Data
         public string County{ get; set; }
         public string District { get; set; }
         public string Ward { get; set; }
-        public string CountryRegion { get; set; }
+        public string Region { get; set; }
     }
 }
 

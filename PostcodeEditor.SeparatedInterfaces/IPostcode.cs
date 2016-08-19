@@ -8,6 +8,6 @@
         string County { get; set; }
         string District { get; set; }
         string Ward { get; set; }
-        string CountryRegion { get; set; }
+        string Region { get; set; }
     }
 }

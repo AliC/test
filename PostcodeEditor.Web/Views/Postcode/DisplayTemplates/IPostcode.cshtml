@@ -1,9 +1,9 @@
 ﻿@model PostcodeEditor.SeparatedInterfaces.IPostcode
 
 <div>
-    <h4>PostcodeDetails</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl style="columns: 2;" class="dl-horizontal">
+
         <dt>
             @Html.DisplayNameFor(model => model.Postcode)
         </dt>
@@ -11,6 +11,7 @@
         <dd>
             @Html.DisplayFor(model => model.Postcode)
         </dd>
+
 
         <dt>
             @Html.DisplayNameFor(model => model.Latitude)
@@ -53,11 +54,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CountryRegion)
+            @Html.DisplayNameFor(model => model.Region)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CountryRegion)
+            @Html.DisplayFor(model => model.Region)
         </dd>
 
     </dl>

@@ -10,41 +10,10 @@ namespace PostcodeEditor.MockData
     {
         public IEnumerable<IPostcode> Get()
         {
-            string[] lines = File.ReadAllLines(@"C:\dev\PostcodeEditor\PostcodeEditor.MockData\SampleCSV\postcodes.csv");
-            IEnumerable<IPostcode> postcodes = Parse(lines);
+            string[] lines = File.ReadAllLines(Path.GetPathRoot(AppDomain.CurrentDomain.BaseDirectory) + @"\dev\PostcodeEditor\PostcodeEditor.MockData\SampleCSV\postcodes.csv");
 
-            return postcodes;
+            return Parsers.CSVParser<IPostcode, PostcodeDetails>(lines);
         }
-
-        private IEnumerable<IPostcode> Parse(string[] lines)
-        {
-            string[] headerRow = lines[0].Split(',');
-            IDictionary<string, int> index = new Dictionary<string, int>();
-
-            for(int i = 0; i < headerRow.Length; i++)
-            {
-                if (headerRow[i] == "Postcode")
-                {
-                    index.Add("Postcode", i);
-                }
-                
-                //Note ADC: no CountryRegion header in sample csv file, so using Region instead
-                if (headerRow[i] == "Region")
-                {
-                    index.Add("Region", i);
-                }
-            }
-
-            foreach (string line in lines.Skip(1))
-            {
-                string[] columns = line.Split(',');
-
-                yield return new PostcodeDetails
-                {
-                    Postcode = columns[index["Postcode"]],
-                    CountryRegion = columns[index["Region"]],
-                };
-            }
-        }
+        
     }
 }
