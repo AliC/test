@@ -271,6 +271,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Postcode\Index.cshtml" />
     <Content Include="Views\Postcode\List.cshtml" />
+    <Content Include="Views\Postcode\DisplayTemplates\IPostcode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

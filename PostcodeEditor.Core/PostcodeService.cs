@@ -18,7 +18,19 @@ namespace PostcodeEditor.Core
 
         public IEnumerable<IPostcode> Get()
         {
-            return _postcodeDbContext.Postcodes;
+            foreach(Data.PostcodeDetails postcode in _postcodeDbContext.Postcodes)
+            {
+                yield return Map(postcode);
+            }
+        }
+
+        private Core.PostcodeDetails Map(Data.PostcodeDetails postcode)
+        {
+            return new PostcodeDetails
+            {
+                Postcode = postcode.Postcode,
+                CountryRegion = postcode.CountryRegion
+            };
         }
     }
 }

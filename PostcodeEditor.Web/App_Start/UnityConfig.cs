@@ -11,7 +11,7 @@ namespace PostcodeEditor.Web
         {
             UnityContainer container = new UnityContainer();
             
-            container.RegisterType<IPostcodeService, Core.PostcodeService>();
+            container.RegisterType<IPostcodeService, MockData.PostcodeService>();
             
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

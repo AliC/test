@@ -10,6 +10,7 @@
 
 @foreach (IPostcode postcode in Model)
 {
-    <p>@postcode.Postcode</p>
-    <p>@postcode.CountryRegion</p>
+    <div class="field-container">
+        @Html.DisplayFor(p => postcode, "IPostcode")
+    </div>
 }
