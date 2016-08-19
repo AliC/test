@@ -65,7 +65,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="SampleCSV\postcodes.csv" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201608171951204_initial migration.resx">
