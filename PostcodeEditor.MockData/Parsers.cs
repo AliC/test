@@ -10,33 +10,45 @@ namespace PostcodeEditor.MockData
     {
         internal static IEnumerable<TInterface> CSVParser<TInterface, T>(string[] lines) where T : TInterface
         {
-            IDictionary<string, int> headerRowIndex = new Dictionary<string, int>();
+            PropertyInfo[] properties = typeof(TInterface).GetProperties();
+            List<string> headerRow = lines[0].Split(',').ToList();
 
-            string[] headerRow = lines[0].Split(',');
-            PropertyInfo[] typeProperties = typeof(T).GetProperties();
-
-            for (int i = 0; i < headerRow.Length; i++)
-            {
-
-                if (typeProperties.Any(p => p.Name == headerRow[i]))
-                {
-                    headerRowIndex.Add(typeProperties.First(p => p.Name == headerRow[i]).Name, i);
-                }
-            }
+            IDictionary<string, int> columns = GetColumns(properties, headerRow);
 
             foreach (string line in lines.Skip(1))
             {
-                string[] columns = line.Split(',');
+                string[] columnValues = line.Split(',');
 
-                TInterface postcode = (TInterface)Activator.CreateInstance(typeof(T));
-
-                foreach (PropertyInfo property in typeProperties)
-                {
-                    property.SetValue(postcode, Convert.ChangeType(columns[headerRowIndex[property.Name]], property.PropertyType), null);
-                }
-
-                yield return postcode;
+                yield return (TInterface)GetPostcode(typeof(T), properties, columns, columnValues);
             }
         }
-   }
+
+        private static IDictionary<string, int> GetColumns(PropertyInfo[] properties, List<string> columnNames)
+        {
+            IDictionary<string, int> columns = new Dictionary<string, int>();
+
+            for (int i = 0; i < properties.Length; i++)
+            {
+                int index = columnNames.IndexOf(properties[i].Name);
+                if (index > -1)
+                {
+                    columns.Add(columnNames.First(c => c == properties[i].Name), index);
+                }
+            }
+
+            return columns;
+        }
+
+        private static object GetPostcode(Type type, PropertyInfo[] properties, IDictionary<string, int> columns, string[] columnValues)
+        {
+            object postcode = Activator.CreateInstance(type);
+
+            foreach (PropertyInfo property in properties)
+            {
+                property.SetValue(postcode, Convert.ChangeType(columnValues[columns[property.Name]], property.PropertyType), null);
+            }
+
+            return postcode;
+        }
+    }
 }
