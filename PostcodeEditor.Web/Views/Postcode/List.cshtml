@@ -2,15 +2,13 @@
 
 @model IEnumerable<IPostcode>
 
-@{
-    ViewBag.Title = "Postcodes";
-}
+<div id="postcodeList">
+    <h3>Postcodes</h3>
 
-<h2>@ViewBag.Title</h2>
-
-@foreach (IPostcode postcode in Model)
-{
-    <div class="field-container">
-        @Html.DisplayFor(p => postcode, "IPostcode")
-    </div>
-}
+    @foreach (IPostcode postcode in Model)
+    {
+        <div class="field-container">
+            @Html.DisplayFor(p => postcode, "IPostcode")
+        </div>
+    }
+</div>

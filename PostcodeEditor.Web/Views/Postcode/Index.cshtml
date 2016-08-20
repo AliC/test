@@ -16,7 +16,7 @@
     </p>
 }
 
-@Ajax.ActionLink("Show list", "list",
+@Ajax.ActionLink("Show list", "/",
     new AjaxOptions
     {
         HttpMethod = "GET",
@@ -24,8 +24,4 @@
         UpdateTargetId = "postcodeList"
     })
 
-<div id="postcodeList">
-
-    @Html.Partial("List", Model)
-
-</div>
+@Html.Partial("list", Model)

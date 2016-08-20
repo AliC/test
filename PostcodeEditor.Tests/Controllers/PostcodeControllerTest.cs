@@ -15,37 +15,13 @@ namespace PostcodeEditor.Tests.Controllers
         public void Index()
         {
             IPostcodeService service = Mock.Of<IPostcodeService>();
+            IEnumerable<IPostcode> expectedPostcodes = new List<IPostcode>();
+            Mock.Get(service).Setup(p => p.Get()).Returns(expectedPostcodes);
             PostcodeController controller = new PostcodeController(service);
 
             ViewResult result = controller.Index() as ViewResult;
 
             Assert.IsNotNull(result);
-        }
-
-        [Test]
-        public void List()
-        {
-            IList<Core.PostcodeDetails> expectedPostcodes = new List<Core.PostcodeDetails>
-            {
-                new Core.PostcodeDetails
-                {
-                    Postcode = "QV1 1IJ"
-                }
-            };
-
-            IPostcodeService service = Mock.Of<IPostcodeService>();
-            Mock.Get(service).Setup(s => s.Get()).Returns(expectedPostcodes);
-
-            PostcodeController controller = new PostcodeController(service);
-
-            ViewResult result = controller.List() as ViewResult;
-
-            Assert.IsNotNull(result);
-
-            IList<Core.PostcodeDetails> postcodes = result.Model as IList<Core.PostcodeDetails>;
-
-            Assert.IsNotNull(postcodes);
-            Assert.That(postcodes.Count, Is.EqualTo(expectedPostcodes.Count));
         }
 
     }
