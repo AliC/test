@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using PostcodeEditor.Core;
 using PostcodeEditor.Data;
@@ -17,12 +18,14 @@ namespace PostcodeEditor.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<IPostcode> postcodes = _postcodeService.Get().Take(5);
+
+            return View(postcodes);
         }
 
         public ActionResult List()
         {
-            IEnumerable<IPostcode> postcodes = _postcodeService.Get();
+            IEnumerable<IPostcode> postcodes = _postcodeService.Get().Skip(5).Take(5);
 
             return View(postcodes);
         }

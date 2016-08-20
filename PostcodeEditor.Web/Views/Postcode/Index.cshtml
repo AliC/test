@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<PostcodeEditor.SeparatedInterfaces.IPostcode>
+
+@{
     ViewBag.Title = "Postcode Editor";
 }
 
@@ -14,4 +16,16 @@
     </p>
 }
 
-@Html.ActionLink("Go to list", "list")
+@Ajax.ActionLink("Show list", "list",
+    new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "postcodeList"
+    })
+
+<div id="postcodeList">
+
+    @Html.Partial("List", Model)
+
+</div>
