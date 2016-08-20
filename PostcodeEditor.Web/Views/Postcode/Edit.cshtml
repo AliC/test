@@ -1,0 +1,11 @@
+﻿@using PostcodeEditor.SeparatedInterfaces
+
+@model IPostcode
+
+<div id="postcodeList">
+    <h3>Edit postcode</h3>
+
+    <div class="field-container">
+        @Html.EditorFor(p => Model, "IPostcode")
+    </div>
+</div>

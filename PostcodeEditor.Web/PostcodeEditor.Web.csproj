@@ -274,6 +274,7 @@
     <Content Include="Views\Postcode\Index.cshtml" />
     <Content Include="Views\Postcode\List.cshtml" />
     <Content Include="Views\Postcode\DisplayTemplates\IPostcode.cshtml" />
+    <Content Include="Views\Postcode\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,9 +17,12 @@ namespace PostcodeEditor.Web.Controllers
             _postcodeService = postcodeService;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
-            IEnumerable<IPostcode> postcodes = _postcodeService.Get().Skip(((int)DateTime.Now.Ticks % 300) / 5).Take(5);
+            ViewBag.CurrentPage = page;
+
+            IEnumerable<IPostcode> postcodes = _postcodeService.Get().Skip((page - 1) * 5).Take(5);
+
             if (Request.IsAjaxRequest())
             {
                 return PartialView("list", postcodes);
@@ -27,6 +30,11 @@ namespace PostcodeEditor.Web.Controllers
 
             return View(postcodes);
         }
+        public ActionResult Edit(string postcode)
+        {
+            IPostcode postcodeToEdit = _postcodeService.Get().First(p => p.Postcode == postcode);
 
+            return View(postcodeToEdit);
+        }
     }
 }

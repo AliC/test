@@ -16,12 +16,5 @@
     </p>
 }
 
-@Ajax.ActionLink("Show list", "/",
-    new AjaxOptions
-    {
-        HttpMethod = "GET",
-        InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "postcodeList"
-    })
-
 @Html.Partial("list", Model)
+

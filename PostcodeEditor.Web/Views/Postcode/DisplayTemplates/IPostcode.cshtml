@@ -64,6 +64,11 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Ajax.ActionLink("Edit", "Edit", new { postcode = Model.Postcode }, new AjaxOptions
+    {
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "postcodeList"
+    }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
