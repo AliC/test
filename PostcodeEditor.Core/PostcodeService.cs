@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using PostcodeEditor.Core;
@@ -22,6 +23,11 @@ namespace PostcodeEditor.Core
             {
                 yield return Map(postcode);
             }
+        }
+
+        public void Update(IPostcode postcode)
+        {
+            throw new NotImplementedException();
         }
 
         private Core.PostcodeDetails Map(Data.PostcodeDetails postcode)

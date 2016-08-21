@@ -12,8 +12,12 @@ namespace PostcodeEditor.MockData
         {
             string[] lines = File.ReadAllLines(Path.GetPathRoot(AppDomain.CurrentDomain.BaseDirectory) + @"\dev\PostcodeEditor\PostcodeEditor.MockData\SampleCSV\postcodes.csv");
 
-            return Parsers.CSVParser<IPostcode, PostcodeDetails>(lines);
+            return Parsers.CSVParser<PostcodeDetails>(lines);
         }
-        
+
+        public void Update(IPostcode postcode)
+        {
+            Parsers.Update<PostcodeDetails>(postcode);
+        }
     }
 }

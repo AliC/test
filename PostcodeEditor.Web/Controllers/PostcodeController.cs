@@ -30,11 +30,24 @@ namespace PostcodeEditor.Web.Controllers
 
             return View(postcodes);
         }
-        public ActionResult Edit(string postcode)
+        public ActionResult Edit(int id)
         {
-            IPostcode postcodeToEdit = _postcodeService.Get().First(p => p.Postcode == postcode);
+            IPostcode postcodeToEdit = _postcodeService.Get().First(p => p.Id == id);
 
-            return View(postcodeToEdit);
+            return PartialView(postcodeToEdit);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Core.PostcodeDetails postcodeDetails)
+        {
+            if (ModelState.IsValid)
+            {
+                _postcodeService.Update(postcodeDetails);
+
+                return RedirectToAction("Index");
+            }
+
+            return PartialView(postcodeDetails);
         }
     }
 }

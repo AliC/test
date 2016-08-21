@@ -6,21 +6,18 @@
     <h3>Postcodes</h3>
 
     <ul class="pagination">
-
         @{int lastPage = ViewBag.CurrentPage < 5 ? 5 : ViewBag.CurrentPage + 1; }
 
         @for (int i = lastPage - 4; i <= lastPage; i++)
         {
-
             <li class="@(ViewBag.CurrentPage == i ? "active" : "")">
                 @Ajax.ActionLink(i.ToString(), string.Empty, new { page = i },
-                                new AjaxOptions
-                                {
-                                    HttpMethod = "GET",
-                                    InsertionMode = InsertionMode.Replace,
-                                    UpdateTargetId = "postcodeList",
-
-                                })
+                    new AjaxOptions
+                    {
+                        HttpMethod = "GET",
+                        InsertionMode = InsertionMode.Replace,
+                        UpdateTargetId = "postcodeList",
+                    })
             </li>
         }
     </ul>

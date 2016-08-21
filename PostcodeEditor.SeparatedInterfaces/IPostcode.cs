@@ -2,6 +2,7 @@
 {
     public interface IPostcode
     {
+        int Id { get; set; }
         string Postcode { get; set; }
         decimal Latitude { get; set; }
         decimal Longitude { get; set; }
