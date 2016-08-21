@@ -57,6 +57,10 @@
     <Compile Include="Migrations\201608181827046_Added CountryRegion property.Designer.cs">
       <DependentUpon>201608181827046_Added CountryRegion property.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201608211507494_Tweaks.cs" />
+    <Compile Include="Migrations\201608211507494_Tweaks.Designer.cs">
+      <DependentUpon>201608211507494_Tweaks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PostcodeDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +76,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201608181827046_Added CountryRegion property.resx">
       <DependentUpon>201608181827046_Added CountryRegion property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201608211507494_Tweaks.resx">
+      <DependentUpon>201608211507494_Tweaks.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
