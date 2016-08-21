@@ -1,4 +1,4 @@
-﻿~namespace PostcodeEditor.SeparatedInterfaces
+﻿namespace PostcodeEditor.SeparatedInterfaces
 {
     public interface IPostcode
     {
