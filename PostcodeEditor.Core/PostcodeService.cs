@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using PostcodeEditor.Core;
 using PostcodeEditor.Data;
 using PostcodeEditor.Data.Repositories;
@@ -27,15 +28,40 @@ namespace PostcodeEditor.Core
 
         public void Update(IPostcode postcode)
         {
-            throw new NotImplementedException();
+            Data.PostcodeDetails postcodeDetails = Map(postcode);
+            _postcodeDbContext.Postcodes.Attach(postcodeDetails);
+            _postcodeDbContext.Entry(postcodeDetails).State = EntityState.Modified;
+
+            _postcodeDbContext.SaveChanges();
+        }
+
+        private Data.PostcodeDetails Map(IPostcode postcode)
+        {
+            return new Data.PostcodeDetails
+            {
+                Id = postcode.Id,
+                Postcode = postcode.Postcode,
+                County = postcode.County,
+                District = postcode.District,
+                Latitude = postcode.Latitude,
+                Longitude = postcode.Longitude,
+                Region = postcode.Region,
+                Ward = postcode.Ward
+            };
         }
 
         private Core.PostcodeDetails Map(Data.PostcodeDetails postcode)
         {
             return new PostcodeDetails
             {
+                Id = postcode.Id,
                 Postcode = postcode.Postcode,
-                Region = postcode.Region
+                County = postcode.County,
+                District = postcode.District,
+                Latitude = postcode.Latitude,
+                Longitude = postcode.Longitude,
+                Region = postcode.Region,
+                Ward = postcode.Ward
             };
         }
     }
