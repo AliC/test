@@ -27,13 +27,13 @@ namespace PostcodeEditor.Data.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
-            context.Postcodes.AddOrUpdate(p => p.Postcode, new PostcodeDetails
-            {
-                Id = 1,
-                Postcode = "QV1 1IJ",
-                Region = "From EF Seed"
-            });
+            
+            //context.Postcodes.AddOrUpdate(p => p.Postcode, new PostcodeDetails
+            //{
+            //    Id = 1,
+            //    Postcode = "QV1 1IJ",
+            //    Region = "From EF Seed"
+            //});
         }
     }
 }

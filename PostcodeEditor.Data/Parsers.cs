@@ -5,14 +5,14 @@ using System.Reflection;
 using System.Threading;
 using PostcodeEditor.SeparatedInterfaces;
 
-namespace PostcodeEditor.MockData
+namespace PostcodeEditor.Data
 {
-    internal class Parsers
+    public class Parsers
     {
         private static int id;
         private static IList<IPostcode> _postcodes = new List<IPostcode>();
 
-        internal static IEnumerable<IPostcode> CSVParser<T>(string[] lines) where T : IPostcode
+        public static IEnumerable<IPostcode> CSVParser<T>(string[] lines) where T : IPostcode
         {
             if (!_postcodes.Any())
             {
@@ -32,7 +32,7 @@ namespace PostcodeEditor.MockData
             return _postcodes;
         }
 
-        internal static void Update<T>(IPostcode postcode)
+        public static void Update<T>(IPostcode postcode)
         {
             IPostcode updateCandidate = _postcodes.First(p => p.Id == postcode.Id);
 

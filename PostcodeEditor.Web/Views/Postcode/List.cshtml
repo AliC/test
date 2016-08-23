@@ -22,6 +22,14 @@
         }
     </ul>
 
+    @if(!Model.Any())
+    {
+        <div>
+            <hr />
+            <p>No postcodes uploaded.  Please upload a postcode file.</p>
+        </div>
+    }
+
     @foreach (IPostcode postcode in Model)
     {
         <div class="field-container">

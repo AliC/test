@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using PostcodeEditor.Data;
 using PostcodeEditor.SeparatedInterfaces;
 
 namespace PostcodeEditor.MockData
