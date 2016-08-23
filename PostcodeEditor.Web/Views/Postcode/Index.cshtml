@@ -6,15 +6,17 @@
 
 <h2>@ViewBag.Title</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("", "", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <p>
-        <input type="file" id="file" name="file" formenctype="multipart/form-data" />
+        <input type="file" id="file" name="file" />
     </p>
     <p>
-        <input type="submit" value="Upload" />
+        <input type="submit" value="Upload"/>
     </p>
 }
+
+<p>Total postcodes: @ViewBag.TotalPostcodes</p>
 
 @Html.Partial("list", Model)
 

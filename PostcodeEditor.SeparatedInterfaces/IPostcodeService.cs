@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PostcodeEditor.SeparatedInterfaces
 {
@@ -7,5 +8,7 @@ namespace PostcodeEditor.SeparatedInterfaces
         IEnumerable<IPostcode> Get();
 
         void Update(IPostcode postcode);
+
+        Task Save(IEnumerable<IPostcode> postcodes);
     }
 }

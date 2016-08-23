@@ -215,6 +215,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\PostcodeEditor.Data.Repositories.PostcodeDbContext.mdf" />
+    <Content Include="App_Data\PostcodeEditor.Data.Repositories.PostcodeDbContext_log.ldf">
+      <DependentUpon>PostcodeEditor.Data.Repositories.PostcodeDbContext.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -278,7 +282,6 @@
     <Content Include="Views\Postcode\EditorTemplates\IPostcode.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\FromTemplate\" />
   </ItemGroup>
   <ItemGroup>

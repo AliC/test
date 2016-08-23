@@ -5,24 +5,64 @@
 <div id="postcodeList">
     <h3>Postcodes</h3>
 
-    <ul class="pagination">
-        @{int lastPage = ViewBag.CurrentPage < 5 ? 5 : ViewBag.CurrentPage + 1; }
-
-        @for (int i = lastPage - 4; i <= lastPage; i++)
+    @{AjaxOptions options = new AjaxOptions
         {
-            <li class="@(ViewBag.CurrentPage == i ? "active" : "")">
-                @Ajax.ActionLink(i.ToString(), string.Empty, new { page = i },
-                    new AjaxOptions
-                    {
-                        HttpMethod = "GET",
-                        InsertionMode = InsertionMode.Replace,
-                        UpdateTargetId = "postcodeList",
-                    })
-            </li>
-        }
+            HttpMethod = "GET",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "postcodeList",
+        };}
+
+    @{
+        int currentPage = ViewBag.CurrentPage;
+        int totalPages = ViewBag.TotalPages;
+    }
+    <ul class="pagination">
+        <li class="@(currentPage - 5 >= 1 ? "" : "disabled")">
+            @if (currentPage - 5 >= 1)
+            {
+                @Ajax.ActionLink("<<", string.Empty, new { page = currentPage - 5 }, options)
+            }
+            else
+            {
+                <span><<</span>
+            }
+        </li>
+        <li class="@(currentPage - 1 >= 1 ? "" : "disabled")">
+            @if (currentPage - 1 >= 1)
+            {
+                @Ajax.ActionLink("<", string.Empty, new { page = currentPage - 1 }, options)
+            }
+            else
+            {
+                <span><</span>
+            }
+        </li>
+        <li class="active">
+            @Ajax.ActionLink(currentPage.ToString(), string.Empty, new { page = currentPage }, options)
+        </li>
+        <li class="@(currentPage + 1 <= totalPages ? "" : "disabled")">
+            @if (currentPage + 1 <= totalPages)
+            {
+                @Ajax.ActionLink(">", string.Empty, new { page = ViewBag.CurrentPage + 1 }, options)
+            }
+            else
+            {
+                <span>></span>
+            }
+        </li>
+        <li class="@(currentPage + 5 <= totalPages ? "" : "disabled")">
+            @if (currentPage + 5 <= totalPages)
+            {
+                @Ajax.ActionLink(">>", string.Empty, new { page = ViewBag.CurrentPage + 5 }, options)
+            }
+            else
+            {
+                <span>>></span>
+            }
+        </li>
     </ul>
 
-    @if(!Model.Any())
+    @if (!Model.Any())
     {
         <div>
             <hr />

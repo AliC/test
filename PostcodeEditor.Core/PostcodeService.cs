@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using PostcodeEditor.Core;
 using PostcodeEditor.Data;
 using PostcodeEditor.Data.Repositories;
@@ -35,6 +36,24 @@ namespace PostcodeEditor.Core
             _postcodeDbContext.SaveChanges();
         }
 
+        public async Task Save(IEnumerable<IPostcode> postcodes)
+        {
+            IEnumerable<Data.PostcodeDetails> postcodeDetails = Map(postcodes);
+
+            _postcodeDbContext.Postcodes.RemoveRange(_postcodeDbContext.Postcodes);
+            _postcodeDbContext.Postcodes.AddRange(postcodeDetails);
+
+            await _postcodeDbContext.SaveChangesAsync();
+        }
+
+        private IEnumerable<Data.PostcodeDetails> Map(IEnumerable<IPostcode> postcodes)
+        {
+            foreach (Core.PostcodeDetails postcode in postcodes)
+            {
+                yield return Map(postcode);
+            }
+        }
+
         private Data.PostcodeDetails Map(IPostcode postcode)
         {
             return new Data.PostcodeDetails
@@ -50,19 +69,19 @@ namespace PostcodeEditor.Core
             };
         }
 
-        private Core.PostcodeDetails Map(Data.PostcodeDetails postcode)
-        {
-            return new PostcodeDetails
-            {
-                Id = postcode.Id,
-                Postcode = postcode.Postcode,
-                County = postcode.County,
-                District = postcode.District,
-                Latitude = postcode.Latitude,
-                Longitude = postcode.Longitude,
-                Region = postcode.Region,
-                Ward = postcode.Ward
-            };
-        }
+        //private Core.PostcodeDetails Map(IPostcode postcode)
+        //{
+        //    return new Core.PostcodeDetails
+        //    {
+        //        Id = postcode.Id,
+        //        Postcode = postcode.Postcode,
+        //        County = postcode.County,
+        //        District = postcode.District,
+        //        Latitude = postcode.Latitude,
+        //        Longitude = postcode.Longitude,
+        //        Region = postcode.Region,
+        //        Ward = postcode.Ward
+        //    };
+        //}
     }
 }

@@ -24,36 +24,35 @@ namespace PostcodeEditor.Web.Controllers
         {
             ViewBag.CurrentPage = page;
 
-            IEnumerable<IPostcode> postcodes = _postcodeService.Get().Skip((page - 1) * 5).Take(5);
+            IList<IPostcode> postcodes = _postcodeService.Get().ToList();
+            ViewBag.TotalPostcodes = postcodes.Count;
+            ViewBag.TotalPages = (int)Math.Ceiling(postcodes.Count / 5m);
+
+            IEnumerable<IPostcode> pagedPostcodes = postcodes.Skip((page - 1) * 5).Take(5);
 
             if (Request.IsAjaxRequest())
             {
-                return PartialView("list", postcodes);
+                return PartialView("list", pagedPostcodes);
             }
 
-            return View(postcodes);
+            return View(pagedPostcodes);
         }
 
         [HttpPost]
         public async Task<ActionResult> Index(HttpPostedFileBase file)
         {
-            if(file != null && file.ContentLength > 0)
+            if (file != null && file.ContentLength > 0)
             {
                 string contents = await GetFileContents(file.InputStream);
 
                 string[] lines = contents.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
-                Parsers.CSVParser<Core.PostcodeDetails>(lines);
+                IEnumerable<IPostcode> postcodes = Parsers.CSVParser<Core.PostcodeDetails>(lines);
+
+                await _postcodeService.Save(postcodes);
             }
 
-            ViewBag.CurrentPage = 1;
-            return View(new List<IPostcode>(0));
-        }
-
-        private async Task<string> GetFileContents(Stream stream)
-        {
-            StreamReader reader = new StreamReader(stream);
-            return await reader.ReadToEndAsync();
+            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(int id)
@@ -70,10 +69,18 @@ namespace PostcodeEditor.Web.Controllers
             {
                 _postcodeService.Update(postcodeDetails);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { page = 6 });
             }
 
             return PartialView(postcodeDetails);
         }
+
+        private async Task<string> GetFileContents(Stream stream)
+        {
+            StreamReader reader = new StreamReader(stream);
+
+            return await reader.ReadToEndAsync();
+        }
+
     }
 }
