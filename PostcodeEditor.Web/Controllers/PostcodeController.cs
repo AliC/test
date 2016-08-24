@@ -43,11 +43,7 @@ namespace PostcodeEditor.Web.Controllers
         {
             if (file != null && file.ContentLength > 0)
             {
-                string contents = await GetFileContents(file.InputStream);
-
-                string[] lines = contents.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-
-                IEnumerable<IPostcode> postcodes = Parsers.CSVParser<Core.PostcodeDetails>(lines);
+                IEnumerable<IPostcode> postcodes = Parsers.CSVParser<Core.PostcodeDetails>(file.InputStream);
 
                 await _postcodeService.Save(postcodes);
             }

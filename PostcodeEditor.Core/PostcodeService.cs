@@ -38,12 +38,20 @@ namespace PostcodeEditor.Core
 
         public async Task Save(IEnumerable<IPostcode> postcodes)
         {
-            IEnumerable<Data.PostcodeDetails> postcodeDetails = Map(postcodes);
+            IList<Data.PostcodeDetails> postcodeDetails = Map(postcodes).ToList();
 
             _postcodeDbContext.Postcodes.RemoveRange(_postcodeDbContext.Postcodes);
-            _postcodeDbContext.Postcodes.AddRange(postcodeDetails);
 
-            await _postcodeDbContext.SaveChangesAsync();
+            int chunkSize = 50000;
+            int chunkIndex = 0;
+            while (chunkIndex < postcodeDetails.Count)
+            {
+                _postcodeDbContext.Postcodes.AddRange(postcodeDetails.Skip(chunkIndex).Take(chunkSize));
+
+                await _postcodeDbContext.SaveChangesAsync();
+
+                chunkIndex += chunkSize;
+            }
         }
 
         private IEnumerable<Data.PostcodeDetails> Map(IEnumerable<IPostcode> postcodes)
